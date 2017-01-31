@@ -11,25 +11,29 @@ var Route = router.Route;
 var Router = router.Router;
 
 //use browserHistory to keep history
-var browserHistory = router.browserHistory;
+var hashHistory = router.hashHistory;
 
 // Include the IndexRoute (catch-all route)
 var IndexRoute = router.IndexRoute;
 
 // Reference the high-level components
 var Main = require("../components/Main");
-var UserList = require("../components/UserList");
 var Profile = require("../components/Profile");
+var ProfileShell = require("../components/ProfileShell")
+var ProfileList = require("../components/ProfileList")
+var Create = require("../components/Create");
 
 
 // Export the Routes
 module.exports = (
 
-  <Router history={browserHistory}>
+  <Router history={hashHistory}>
     <Route path="/" component={Main}>
-	 	<IndexRoute component={Home} />
-		<Route path="userlist" component={UserList} />
-		<Route path="profile" component={Profile} />
+		<Route path="profiles" component={ProfileShell}>
+            <Route path="all" component={ProfileList} />
+            <Route path="id/:id" component={Profile} />
+            <Route path="create" component={Create} />
+        </Route> 
     </Route>
   </Router>
 
