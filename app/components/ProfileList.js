@@ -33,9 +33,9 @@ var ProfileShell = React.createClass({
                 {
                   this.state.users.map(function(obj, i){
                   return <div key={i} id={i}>
-                  <img src={obj.photo} />
+                  <img className="img-responsive" src={obj.photo} />
                   <p key={obj.name}>{obj.name} - {obj.description}
-                  <a href={"#/profiles/id/" + obj._id} className='btn btn-danger' id={i}>View Profile</a></p></div>
+                  <a href={"#/profiles/id/" + obj._id} className='btn btn-success' id={i}>View Profile</a></p></div>
                  }.bind(this))
                 }
               </div>
