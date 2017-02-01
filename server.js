@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://localhost/spacebuddies");
+mongoose.connect("mongodb://heroku_qthd00nz:gnotat81v148ga1tgfdl1rpdbs@ds139959.mlab.com:39959/heroku_qthd00nz");
 var db = mongoose.connection;
 
 // Show any mongoose errors
