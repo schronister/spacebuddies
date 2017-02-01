@@ -34,6 +34,11 @@ var Profile = React.createClass({
                     <a className="btn btn-danger" href={"#/profiles/edit/"+this.props.routeParams.id}>Edit this profile </a>
                 </div>
             </div>
+            <div className="row">
+              <div className="col-sm-12">
+              <a className="allproflink" href={"#/profiles/all"}>Back to all profiles</a>
+              </div>
+            </div>
         </div>
     </div>
     );

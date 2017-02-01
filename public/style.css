@@ -27,9 +27,10 @@ body{
 
 .dashboardContent{
     background: rgba(0, 0, 0, 0.7);
-    padding:2%;
+    padding:4%;
     border:1px solid #f48c42;
     border-radius: 6px;
+    text-align:center;
 }
 
 .userDiv{
@@ -72,4 +73,13 @@ body{
     text-align:left;
     padding:15px;
     word-wrap: break-word;
+}
+
+.allproflink{
+    text-align:left;
+    padding-bottom:15px;
+}
+
+.spacenews{
+    text-align:left;
 }

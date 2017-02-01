@@ -9,6 +9,7 @@ var Dashboard = React.createClass({
         return {
           photo:"",
           title:"",
+          type:"",
           news:[]
         }
     },
@@ -16,7 +17,7 @@ var Dashboard = React.createClass({
     componentWillMount: function(){
         helpers.getAPOD().then(function(data){
             console.log("data", data);
-            this.setState({photo: data.url, title: data.title});
+            this.setState({photo: data.url, title: data.title, type:data.media_type});
         }.bind(this));
 
         helpers.getNews().then(function(data){
@@ -39,10 +40,16 @@ var Dashboard = React.createClass({
         <div className="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
         </div>
         <div className="dashboardContent">
-        <h3>NASA Photo of the Day</h3>
-        <img className="img-responsive" src={this.state.photo}/>
+        <h2>NASA Image of the Day</h2>
+        {this.state.type === "video" ? (
+        <iframe src={this.state.photo}></iframe>
+        ) : (
+        <img className="img-responsive" src={this.state.photo}/> 
+        )}
+        
         <p>{this.state.title} - <a target='_blank' href="https://apod.nasa.gov/apod/astropix.html">Source</a></p>
-        <h3>Latest Space News From <a target='_blank' href="https://www.reddit.com/r/space">/r/space</a></h3>
+        <h2>Latest Space News From <a target='_blank' href="https://www.reddit.com/r/space">/r/space</a></h2>
+        <div className="spacenews">
         {
           this.state.news.map(function(obj, i){
           return <div key={i} id={i}>
@@ -50,6 +57,7 @@ var Dashboard = React.createClass({
           <a target='_blank' href={obj.link} id={i}>Link</a></p></div>
          }.bind(this))
         }
+        </div>
         </div>
         
     </div>

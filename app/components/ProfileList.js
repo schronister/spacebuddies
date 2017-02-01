@@ -23,13 +23,13 @@ var ProfileShell = React.createClass({
     return (
     <div className="row">
 
-          <div className="col-lg-12 userSection">
+          <div className="col-sm-12 userSection">
             
                 <h1>All Profiles</h1>
                           
                 {
                   this.state.users.map(function(obj, i){
-                  return <div key={i} id={i} className="userDiv col-sm-4">
+                  return <div key={i} id={i} className="userDiv col-lg-4 col-md-6 col-sm-12">
                   <img className="img-responsive" src={obj.photo} />
                   <h4 key={obj.name}><strong>{obj.name}</strong></h4>
                   <p><a href={"#/profiles/id/" + obj._id} className='btn btn-success' id={i}>View Profile</a></p></div>
