@@ -33,13 +33,14 @@ module.exports = (
   <Router history={hashHistory}>
     <Route path="/" component={Main}>
         <IndexRoute component={Dashboard}/>
+        <Route path="saved" component={Saved}/>
 		<Route path="profiles" component={ProfileShell}>
             <Route path="all" component={ProfileList} />
             <Route path="id/:id" component={Profile} />
             <Route path="create" component={Create} />
             <Route path="edit/:id" component={Edit} />
         </Route> 
-        <Route path="saved" component={Saved}/>
+
     </Route>
   </Router>
 
