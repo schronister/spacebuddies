@@ -9,18 +9,67 @@ body{
     color:#f48c42;
 }
 
-.navbar-default{
+.navbar-inverse{
     background-color:transparent;
     color:white;
     border-color:black;
 }
 
 .navbar-brand{
-    font-size:24px;
+    font-size:36px;
 }
 
 .jumbotron{
     background-color:transparent;
     border:1px solid #f48c42;
 
+}
+
+.dashboardContent{
+    background: rgba(0, 0, 0, 0.7);
+    padding:2%;
+    border:1px solid #f48c42;
+    border-radius: 6px;
+}
+
+.userDiv{
+    text-align: center;
+    padding: 5px;
+}
+
+.userDiv>img{
+        margin:5px auto;
+}
+
+.userSection{
+    background: rgba(0, 0, 0, 0.7);
+    border:1px solid #f48c42;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.createForm{
+    background: rgba(0, 0, 0, 0.7);
+    border:1px solid #f48c42;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.profile{
+    background: rgba(0, 0, 0, 0.7);
+    border:1px solid #f48c42;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.profileImg{
+    padding:15px;
+    max-width: 100%;
+    height:auto;
+}
+
+.profileDescription{
+    text-align:left;
+    padding:15px;
+    word-wrap: break-word;
 }

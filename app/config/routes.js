@@ -23,6 +23,7 @@ var ProfileShell = require("../components/ProfileShell")
 var ProfileList = require("../components/ProfileList")
 var Create = require("../components/Create");
 var Dashboard = require("../components/Dashboard");
+var Edit = require("../components/Edit");
 
 
 // Export the Routes
@@ -35,6 +36,7 @@ module.exports = (
             <Route path="all" component={ProfileList} />
             <Route path="id/:id" component={Profile} />
             <Route path="create" component={Create} />
+            <Route path="edit/:id" component={Edit} />
         </Route> 
     </Route>
   </Router>

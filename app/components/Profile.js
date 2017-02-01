@@ -23,10 +23,18 @@ var Profile = React.createClass({
 
     return (
     <div>
-        <h1>Profile for {this.state.user.name}</h1>
-        <img src={this.state.user.photo}/>
-        <p>{this.state.user.description}</p>
-
+        <div className="profile">
+            <h1>Profile for {this.state.user.name}</h1>
+            <div className="row">
+                <div className="col-sm-4">
+                    <img className="profileImg" src={this.state.user.photo}/>
+                </div>
+                <div className="col-sm-8 profileDescription">
+                    <p>{this.state.user.description}</p>
+                    <a className="btn btn-danger" href={"#/profiles/edit/"+this.props.routeParams.id}>Edit this profile </a>
+                </div>
+            </div>
+        </div>
     </div>
     );
   }

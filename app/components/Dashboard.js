@@ -8,6 +8,7 @@ var Dashboard = React.createClass({
     getInitialState: function(){
         return {
           photo:"",
+          title:"",
           news:[]
         }
     },
@@ -15,11 +16,13 @@ var Dashboard = React.createClass({
     componentWillMount: function(){
         helpers.getAPOD().then(function(data){
             console.log("data", data);
-            this.setState({photo: data.url});
+            this.setState({photo: data.url, title: data.title});
         }.bind(this));
 
-        var data = helpers.getNews();
-        this.setState({news:data});
+        helpers.getNews().then(function(data){
+            this.setState({news:data});
+        }.bind(this));
+        
     },
 
     render: function() {
@@ -31,12 +34,20 @@ var Dashboard = React.createClass({
         <p>Find your space buddies here. Our user database is full of galactic explorers like you.</p>
         <a href="#/profiles/all" className="btn btn-primary">View profiles</a>
         </div>
-
-        <h4>Space News</h4>
-
-        <h4>NASA Photo of the Day</h4>
+        <div className="dashboardContent">
+        <h3>NASA Photo of the Day</h3>
         <img className="img-responsive" src={this.state.photo}/>
-        <p><a href="https://apod.nasa.gov/apod/astropix.html">Source</a></p>
+        <p>{this.state.title} - <a target='_blank' href="https://apod.nasa.gov/apod/astropix.html">Source</a></p>
+        <h3>Latest Space News From <a target='_blank' href="https://www.reddit.com/r/space">/r/space</a></h3>
+        {
+          this.state.news.map(function(obj, i){
+          return <div key={i} id={i}>
+          <p key={obj.title}>{i+1}. {obj.title} - 
+          <a target='_blank' href={obj.link} id={i}>Link</a></p></div>
+         }.bind(this))
+        }
+        </div>
+        
     </div>
     );
   }

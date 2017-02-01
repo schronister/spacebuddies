@@ -1,8 +1,7 @@
 // Include the axios package for performing HTTP requests (promise based alternative to request)
 var axios = require("axios");
 var querystring = require("querystring");
-var request = require('request');
-var cheerio = require("cheerio");
+
 
 
 // Helper Functions
@@ -29,8 +28,21 @@ var helpers = {
         return response.data;
     })
   },
+  updateDB: function(id, name, description, photo){
+    return axios({
+        method:'put',
+        url:'/api/profiles/id/' + id,
+        data:querystring.stringify({
+            name:name,
+            description: description,
+            photo:photo
+        })
+    }).then(function(response){
+        console.log("User updated");
+    })
+  },
 
-  deleteFromDB: function(title){
+  /*deleteFromDB: function(title){
     return axios({
       method: 'post',
       url: "/api/profiles/delete",
@@ -40,27 +52,17 @@ var helpers = {
     }).then(function(response){
       console.log("Deleted user");
     });
-  },
+  },*/
   getAPOD: function(){
-    return axios.get("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")
+    return axios.get("https://api.nasa.gov/planetary/apod?api_key=FR4R2oNwSxIayEh9YA2RxrXSfgRfVMtlj2hGS0dF")
     .then(function(response){
         return response.data;
     })
   },
   getNews: function(){
-    request("https://www.reddit.com/r/space/top/?sort=top&t=day", function(error, response, html){
-        console.log(html);
-        var $ = cheerio.load(html);
-        var result = [];
-        $("a.title").each(function(i, element){
-        var title = $(this).text();
-        var link = $(element).attr("href");
-
-
-        result.push({title:title, link:link});
-        response.json(result);
-        });
-        
+    return axios.get("/news").then(function(response){
+        console.log("response",response.data)
+        return response.data;
     })
   }
 

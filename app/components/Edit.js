@@ -10,8 +10,17 @@ var Create = React.createClass({
     return {name:"",
             description:"",
             photo:"",
-            newUser:""}
+            editUser:"",
+            userUpdated:false}
     },
+    //get any database info when loading
+    componentWillMount: function() {
+        helpers.getOneFromDB(this.props.routeParams.id).then(function(data){
+          this.setState({ name: data.name, description:data.description, photo:data.photo });
+        }.bind(this));
+        
+    },
+
     //keep the state in sync with the form
     handleChange: function(event){
     var newState = {};
@@ -22,18 +31,19 @@ var Create = React.createClass({
     handleSubmit: function(event){
     event.preventDefault();
 
-    this.newUser({name:this.state.name, description: this.state.description, photo:this.state.photo});
+    this.editUser({name:this.state.name, description: this.state.description, photo:this.state.photo});
 
     },
     //capture the new user info in a new state item
-    newUser: function(newUser) {
-    this.setState({ newUser: newUser });
+    editUser: function(editUser) {
+    this.setState({ editUser: editUser });
     },
     //when form is submitted, save the info to db
     componentDidUpdate: function(prevProps, prevState){
-        if (prevState.newUser != this.state.newUser){
-            helpers.saveToDB(this.state.name, this.state.description, this.state.photo).then(function(data){
-            //redirect to the new user profile
+        if (prevState.editUser != this.state.editUser){
+          console.log("calling helpers");
+            helpers.updateDB(this.props.routeParams.id,this.state.name, this.state.description, this.state.photo).then(function(data){
+              this.setState({userUpdated:true})
             }.bind(this))
         }
     },
@@ -44,7 +54,7 @@ var Create = React.createClass({
     <div>
         <div className="createForm"> 
         <br />
-          <h3>Create a new profile</h3>
+          <h3>Editing profile for {this.state.name}</h3>
           <br/>
       
           <form className="form-horizontal" onSubmit={this.handleSubmit}>
@@ -65,14 +75,13 @@ var Create = React.createClass({
               <div className="row">
               <label htmlFor="description" className="col-sm-2 control-label">Description</label>
               <div className="col-sm-9">
-              <input
-                value={this.state.description}
-                type="text"
-                className="form-control"
-                id="description"
-                onChange={this.handleChange}
-                required
-              />
+              <textarea  
+                required 
+                onChange={this.handleChange} 
+                id="description" 
+                className="form-control" 
+                value={this.state.description} rows="3">
+              </textarea>
               </div>
               </div>
               <div className="row">
@@ -95,13 +104,20 @@ var Create = React.createClass({
                 className="btn btn-primary"
                 type="submit"
               >
-                Create
+                Save Changes
               </button>
             </div>
             </div>
           </form>
       </div>
-    </div>
+      <br/>
+      {this.state.userUpdated &&
+
+      <div className="alert alert-success" role="alert">
+        <h3>Changes Saved! <a href={"#/profiles/id/" + this.props.routeParams.id}>Back to profile</a></h3>
+      </div>
+      }
+  </div>
     );
   }
 });
