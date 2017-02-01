@@ -37,7 +37,7 @@ var Dashboard = React.createClass({
         <br/>
         <br/>
         <p>Log in with Facebook to save profiles</p>
-        <div className="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
+        <div className="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true"></div>
         </div>
         <div className="dashboardContent">
         <h2>NASA Image of the Day</h2>
