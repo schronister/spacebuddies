@@ -10,7 +10,10 @@ var Dashboard = React.createClass({
           photo:"",
           title:"",
           type:"",
-          news:[]
+          news:[],
+          userName:"",
+          loggedIn:"",
+          savedBuddies:""
         }
     },
 
@@ -26,6 +29,56 @@ var Dashboard = React.createClass({
         
     },
 
+    componentDidMount: function(){
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '602154599982925',
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v2.8'
+          });
+          FB.AppEvents.logPageView();   
+        };
+
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "//connect.facebook.net/en_US/sdk.js";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+
+
+    },
+
+    setUpState: function(){
+         var userData = FB.api('/me', function(response) {
+            console.log(response);
+          return (JSON.stringify(response));
+        });
+        if (FB.getLoginStatus(function(response) {
+            console.log(response);
+            getStatus(response);
+        }) === true){
+            console.log("logged in")
+            this.setState({userName: userData.name, loggedIn:true})
+        }
+    },
+
+    fbAuth: function(){
+        FB.login(function(response) {
+        if (response.authResponse) {
+         console.log('Welcome!  Fetching your information.... ');
+         FB.api('/me', function(response) {
+           console.log('Good to see you, ' + response.name + '.');
+         });
+         this.setUpState();
+        } else {
+         console.log('User cancelled login or did not fully authorize.');
+        }
+    });
+    },
+
     render: function() {
 
     return (
@@ -37,7 +90,8 @@ var Dashboard = React.createClass({
         <br/>
         <br/>
         <p>Log in with Facebook to save profiles</p>
-        <div className="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true"></div>
+        <a href="#" onClick={this.fbAuth}>Log in with Facebook</a>
+
         </div>
         <div className="dashboardContent">
         <h2>NASA Image of the Day</h2>
