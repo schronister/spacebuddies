@@ -21,7 +21,7 @@ var Main = React.createClass({
         var ary = this.state.savedBuddies;
         ary.push(buddy);
         this.setState({savedBuddies: ary});
-    }
+    },
 
     render: function() {
 
