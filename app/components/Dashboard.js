@@ -51,7 +51,7 @@ var Dashboard = React.createClass({
 
     },
 
-    setUpState: function(){
+/*    setUpState: function(){
          var userData = FB.api('/me', function(response) {
             console.log(response);
           return (JSON.stringify(response));
@@ -61,9 +61,9 @@ var Dashboard = React.createClass({
             getStatus(response);
         }) === true){
             console.log("logged in")
-            this.setState({userName: userData.name, loggedIn:true})
+            
         }
-    },
+    },*/
 
     fbAuth: function(){
         FB.login(function(response) {
@@ -71,8 +71,8 @@ var Dashboard = React.createClass({
          console.log('Welcome!  Fetching your information.... ');
          FB.api('/me', function(response) {
            console.log('Good to see you, ' + response.name + '.');
+           this.setState({userName: userData.name, loggedIn:true})
          });
-         setUpState();
         } else {
          console.log('User cancelled login or did not fully authorize.');
         }
