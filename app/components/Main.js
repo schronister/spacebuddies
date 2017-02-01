@@ -51,7 +51,7 @@ var Main = React.createClass({
         <div className="container">
             
          
-            {this.props.children && React.cloneElement(this.props.children, {setUser:this.setUser, userName:this.state.userName, loggedIn:this.state.loggedIn, savedBuddies:this.state.savedBuddies, saveABuddy:this.saveAbuddy}
+            {this.props.children && React.cloneElement(this.props.children, {setUser:this.setUser, userName:this.state.userName, loggedIn:this.state.loggedIn, savedBuddies:this.state.savedBuddies, saveABuddy:this.saveAbuddy})}
             
 
         </div>
