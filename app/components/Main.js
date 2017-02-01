@@ -5,6 +5,23 @@ var React = require("react");
 var helpers = require("./utils/helpers.js");
 
 var Main = React.createClass({
+    getInitialState: function(){
+        return {
+          userName:"",
+          loggedIn:"",
+          savedBuddies:[]
+        }
+    },
+
+    setUser: function(userName){
+        this.setState({userName: response.name, loggedIn:true})
+    },
+
+    saveABuddy: function(buddy){
+        var ary = this.state.savedBuddies;
+        ary.push(buddy);
+        this.setState({savedBuddies: ary});
+    }
 
     render: function() {
 
@@ -34,7 +51,7 @@ var Main = React.createClass({
         <div className="container">
             
          
-            {this.props.children}
+            {this.props.children && React.cloneElement(this.props.children, {setUser:this.setUser, userName:this.state.userName, loggedIn:this.state.loggedIn, savedBuddies:this.state.savedBuddies, saveABuddy:this.saveAbuddy}
             
 
         </div>
