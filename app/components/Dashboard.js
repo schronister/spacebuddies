@@ -33,6 +33,10 @@ var Dashboard = React.createClass({
         <h2>Headed to the moon?</h2>
         <p>Find your space buddies here. Our user database is full of galactic explorers like you.</p>
         <a href="#/profiles/all" className="btn btn-primary">View profiles</a>
+        <br/>
+        <br/>
+        <p>Log in with Facebook to save profiles</p>
+        <div className="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
         </div>
         <div className="dashboardContent">
         <h3>NASA Photo of the Day</h3>
