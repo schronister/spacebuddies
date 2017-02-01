@@ -65,14 +65,13 @@ var Create = React.createClass({
               <div className="row">
               <label htmlFor="description" className="col-sm-2 control-label">Description</label>
               <div className="col-sm-9">
-              <input
-                value={this.state.description}
-                type="text"
-                className="form-control"
-                id="description"
-                onChange={this.handleChange}
-                required
-              />
+              <textarea  
+                required 
+                onChange={this.handleChange} 
+                id="description" 
+                className="form-control" 
+                value={this.state.description} rows="3">
+              </textarea>
               </div>
               </div>
               <div className="row">
