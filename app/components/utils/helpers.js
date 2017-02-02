@@ -61,7 +61,6 @@ var helpers = {
   },
   getNews: function(){
     return axios.get("/news").then(function(response){
-        console.log("response",response.data)
         return response.data;
     })
   }

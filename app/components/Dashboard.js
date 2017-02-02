@@ -49,18 +49,17 @@ var Dashboard = React.createClass({
     },
 
     fbAuth: function(){
-        var info;
-        FB.login(function(response) {
-        if (response.authResponse) {
-         console.log('Welcome!  Fetching your information.... ');
-         FB.api('/me', function(response) {
-           console.log('Good to see you, ' + response.name + '.');
-          info = response.name;
+        var info = FB.login(function(response) {
+            if (response.authResponse) {
+             console.log('Welcome!  Fetching your information.... ');
+             FB.api('/me', function(response) {
+               console.log('Good to see you, ' + response.name + '.');
+              return response.name;
+             });
+            } else {
+             console.log('User cancelled login or did not fully authorize.');
+            }
          });
-        } else {
-         console.log('User cancelled login or did not fully authorize.');
-        }
-    });
         console.log(info);
         this.props.setUser(info);
     },
