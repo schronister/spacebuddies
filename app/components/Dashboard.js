@@ -3,6 +3,7 @@ var React = require("react");
 
 // Helper Functions
 var helpers = require("./utils/helpers.js");
+var name = "";
 
 var Dashboard = React.createClass({
     getInitialState: function(){
@@ -54,14 +55,13 @@ var Dashboard = React.createClass({
              console.log('Welcome!  Fetching your information.... ');
              FB.api('/me', function(response) {
                console.log('Good to see you, ' + response.name + '.');
-              Dashboard.props.callSetUser(response.name);
+               name = response.name;
              });
-             return name;
             } else {
              console.log('User cancelled login or did not fully authorize.');
             }
          });
-        
+        this.props.setUser(name);
     },
     statics:{
         callSetUser: function(name){
