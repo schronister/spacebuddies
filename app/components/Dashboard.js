@@ -55,8 +55,7 @@ var Dashboard = React.createClass({
          console.log('Welcome!  Fetching your information.... ');
          FB.api('/me', function(response) {
            console.log('Good to see you, ' + response.name + '.');
-          info = response.name
-           callSetUser(response.name);
+          info = response.name;
          });
         } else {
          console.log('User cancelled login or did not fully authorize.');
@@ -80,7 +79,7 @@ var Dashboard = React.createClass({
         <br/>
         <br/>
         <p>Log in with Facebook to save profiles</p>
-        <a href="#" onClick={this.fbAuth.bind(this)}>Log in with Facebook</a>
+        <a href="#" onClick={this.fbAuth}>Log in with Facebook</a>
 
         </div>
         <div className="dashboardContent">
