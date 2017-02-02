@@ -5,7 +5,7 @@ var React = require("react");
 var helpers = require("./utils/helpers.js");
 
 var Main = React.createClass({
-
+ 
     render: function() {
 
     return (
@@ -34,7 +34,6 @@ var Main = React.createClass({
             
          
             {this.props.children}
-            
 
         </div>
     </div>

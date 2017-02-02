@@ -41,7 +41,6 @@ var Create = React.createClass({
     //when form is submitted, save the info to db
     componentDidUpdate: function(prevProps, prevState){
         if (prevState.editUser != this.state.editUser){
-          console.log("calling helpers");
             helpers.updateDB(this.props.routeParams.id,this.state.name, this.state.description, this.state.photo).then(function(data){
               this.setState({userUpdated:true})
             }.bind(this))
@@ -109,14 +108,19 @@ var Create = React.createClass({
             </div>
             </div>
           </form>
+          {this.state.userUpdated &&
+
+          <div className="alert alert-success" role="alert">
+            <h3>Changes Saved! <a href={"#/profiles/id/" + this.props.routeParams.id}>Back to profile</a></h3>
+          </div>
+          }
+          <div className="imagePreview">
+          <h3>Image Preview</h3>
+          <img src={this.state.photo} />
+          </div>
       </div>
       <br/>
-      {this.state.userUpdated &&
-
-      <div className="alert alert-success" role="alert">
-        <h3>Changes Saved! <a href={"#/profiles/id/" + this.props.routeParams.id}>Back to profile</a></h3>
-      </div>
-      }
+      
   </div>
     );
   }

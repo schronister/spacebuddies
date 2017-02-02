@@ -46,18 +46,6 @@ var helpers = {
         console.log("User updated");
     })
   },
-
-  /*deleteFromDB: function(title){
-    return axios({
-      method: 'post',
-      url: "/api/profiles/delete",
-      data: querystring.stringify({
-        title:title
-      })
-    }).then(function(response){
-      console.log("Deleted user");
-    });
-  },*/
   getAPOD: function(){
     return axios.get("https://api.nasa.gov/planetary/apod?api_key=FR4R2oNwSxIayEh9YA2RxrXSfgRfVMtlj2hGS0dF")
     .then(function(response){
@@ -66,7 +54,6 @@ var helpers = {
   },
   getNews: function(){
     return axios.get("/news").then(function(response){
-        console.log("response",response.data)
         return response.data;
     })
   }

@@ -10,7 +10,7 @@ var Dashboard = React.createClass({
           photo:"",
           title:"",
           type:"",
-          news:[]
+          news:[],
         }
     },
 
@@ -25,6 +25,7 @@ var Dashboard = React.createClass({
         }.bind(this));
         
     },
+    
 
     render: function() {
 
@@ -35,9 +36,7 @@ var Dashboard = React.createClass({
         <p>Find your space buddies here. Our user database is full of galactic explorers like you.</p>
         <a href="#/profiles/all" className="btn btn-primary">View profiles</a>
         <br/>
-        <br/>
-        <p>Log in with Facebook to save profiles</p>
-        <div className="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
+      
         </div>
         <div className="dashboardContent">
         <h2>NASA Image of the Day</h2>
