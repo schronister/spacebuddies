@@ -65,7 +65,7 @@ var Dashboard = React.createClass({
 
     callSetUser: function(name){
         this.props.setUser(name);
-    }
+    },
 
     render: function() {
 
