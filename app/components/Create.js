@@ -33,7 +33,6 @@ var Create = React.createClass({
     componentDidUpdate: function(prevProps, prevState){
         if (prevState.newUser != this.state.newUser){
             helpers.saveToDB(this.state.name, this.state.description, this.state.photo).then(function(data){
-            //redirect to the new user profile
             }.bind(this))
         }
     },

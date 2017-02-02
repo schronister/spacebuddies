@@ -13,7 +13,7 @@ var Dashboard = React.createClass({
           news:[],
         }
     },
-
+    //getting photo and news on load
     componentWillMount: function(){
         helpers.getAPOD().then(function(data){
             console.log("data", data);

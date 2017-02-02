@@ -26,6 +26,7 @@ body{
 }
 
 .dashboardContent{
+    margin:0px auto;
     background: rgba(0, 0, 0, 0.7);
     padding:4%;
     border:1px solid #f48c42;
@@ -86,4 +87,9 @@ body{
 
 .imagePreview{
     padding-bottom:20px;
+}
+
+.img-responsive{
+    max-height:500px;
+    margin:0px auto;
 }
