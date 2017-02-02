@@ -32,8 +32,9 @@ module.exports = (
 
   <Router history={hashHistory}>
     <Route path="/" component={Main}>
-        <IndexRoute component={Dashboard}/>
-        <Route path="saved" component={Saved}/>
+        <IndexRoute component={Dashboard}>
+            <Route path="saved" component={Saved}/>
+        </IndexRoute>
 		<Route path="profiles" component={ProfileShell}>
             <Route path="all" component={ProfileList} />
             <Route path="id/:id" component={Profile} />
