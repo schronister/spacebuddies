@@ -55,18 +55,20 @@ var Dashboard = React.createClass({
              console.log('Welcome!  Fetching your information.... ');
              FB.api('/me', function(response) {
                console.log('Good to see you, ' + response.name + '.');
-               name = response.name;
              });
             } else {
              console.log('User cancelled login or did not fully authorize.');
             }
          });
-        this.props.setUser(name);
+        
     },
-    statics:{
-        callSetUser: function(name){
-        this.props.setUser(name);
-        }
+    callSetUser: function(){
+        console.log("in here");
+        FB.api('/me', function(response) {
+               console.log('Good to see you, ' + response.name + '.');
+               this.props.setUser(name);
+             });
+        
     },
     
 
@@ -82,6 +84,7 @@ var Dashboard = React.createClass({
         <br/>
         <p>Log in with Facebook to save profiles</p>
         <a href="#" onClick={this.fbAuth}>Log in with Facebook</a>
+        <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true" onlogin="this.callSetUser();"></div>
 
         </div>
         <div className="dashboardContent">
