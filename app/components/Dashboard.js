@@ -61,6 +61,7 @@ var Dashboard = React.createClass({
          console.log('User cancelled login or did not fully authorize.');
         }
     });
+        console.log(info);
         this.props.setUser(info);
     },
 
