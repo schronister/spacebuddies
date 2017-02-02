@@ -3,7 +3,6 @@ var React = require("react");
 
 // Helper Functions
 var helpers = require("./utils/helpers.js");
-var name = "";
 
 var Dashboard = React.createClass({
     getInitialState: function(){
@@ -26,50 +25,6 @@ var Dashboard = React.createClass({
         }.bind(this));
         
     },
-
-    componentDidMount: function(){
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId      : '602154599982925',
-            cookie     : true,
-            xfbml      : true,
-            version    : 'v2.8'
-          });
-          FB.AppEvents.logPageView();   
-        };
-
-        (function(d, s, id){
-           var js, fjs = d.getElementsByTagName(s)[0];
-           if (d.getElementById(id)) {return;}
-           js = d.createElement(s); js.id = id;
-           js.src = "//connect.facebook.net/en_US/sdk.js";
-           fjs.parentNode.insertBefore(js, fjs);
-         }(document, 'script', 'facebook-jssdk'));
-
-
-    },
-
-    fbAuth: function(){
-        FB.login(function(response) {
-            if (response.authResponse) {
-             console.log('Welcome!  Fetching your information.... ');
-             FB.api('/me', function(response) {
-               console.log('Good to see you, ' + response.name + '.');
-             });
-            } else {
-             console.log('User cancelled login or did not fully authorize.');
-            }
-         });
-        
-    },
-    callSetUser: function(){
-        console.log("in here");
-        FB.api('/me', function(response) {
-               console.log('Good to see you, ' + response.name + '.');
-               this.props.setUser(name);
-             });
-        
-    },
     
 
     render: function() {
@@ -81,11 +36,7 @@ var Dashboard = React.createClass({
         <p>Find your space buddies here. Our user database is full of galactic explorers like you.</p>
         <a href="#/profiles/all" className="btn btn-primary">View profiles</a>
         <br/>
-        <br/>
-        <p>Log in with Facebook to save profiles</p>
-        <a href="#" onClick={this.fbAuth}>Log in with Facebook</a>
-        <div className="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true" onLogin="this.callSetUser();"></div>
-
+      
         </div>
         <div className="dashboardContent">
         <h2>NASA Image of the Day</h2>
