@@ -14,7 +14,7 @@ var Main = React.createClass({
     },
 
     setUser: function(userName){
-        this.setState({userName: response.name, loggedIn:true})
+        this.setState({userName: response.name, loggedIn:true}).bind(this);
     },
 
     saveABuddy: function(buddy){
