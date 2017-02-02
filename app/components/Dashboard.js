@@ -54,7 +54,7 @@ var Dashboard = React.createClass({
          console.log('Welcome!  Fetching your information.... ');
          FB.api('/me', function(response) {
            console.log('Good to see you, ' + response.name + '.');
-           ()=>this.props.setUser(response.name);
+           ()=>this.props.setUser(response.name)();
          });
         } else {
          console.log('User cancelled login or did not fully authorize.');
