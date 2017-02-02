@@ -23,7 +23,6 @@ var Main = React.createClass({
             </div>
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul className="nav navbar-nav navbar-right">
-                    <li><a href="#/saved">My saved profiles</a></li>
                     <li><a href="#/">Dashboard</a></li>
                     <li><a href="#/profiles/all">See profiles</a></li>
                     <li><a href="#/profiles/create">Create a new profile</a></li>
