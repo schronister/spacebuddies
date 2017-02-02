@@ -54,7 +54,7 @@ var Dashboard = React.createClass({
              console.log('Welcome!  Fetching your information.... ');
              FB.api('/me', function(response) {
                console.log('Good to see you, ' + response.name + '.');
-              Dashboard.props.setUser(response.name);
+              Dashboard.props.callSetUser(response.name);
              });
              return name;
             } else {
