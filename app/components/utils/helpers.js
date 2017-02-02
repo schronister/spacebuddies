@@ -1,6 +1,9 @@
 // Include the axios package for performing HTTP requests (promise based alternative to request)
 var axios = require("axios");
 var querystring = require("querystring");
+// Include the react-router module
+var router = require("react-router");
+var hashHistory = router.hashHistory;
 
 
 
@@ -12,6 +15,8 @@ var helpers = {
     return axios.post("/api/profiles", querystring.stringify({name: name, description:description, photo:photo}))
     .then(function(response) {
         console.log("Successfully saved new user");
+        console.log(response);
+        hashHistory.push('/profiles/id/'+response.data.doc._id);
     });
   },
 
