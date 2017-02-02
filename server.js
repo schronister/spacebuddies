@@ -49,7 +49,6 @@ app.post("/api/profiles", function(req,res){
   var newUser = new User({name:req.body.name, description:req.body.description, photo:req.body.photo})
   newUser.save(function(err,doc){
     if (err) throw err;
-    console.log(doc);
     res.send({doc});
   })
 })

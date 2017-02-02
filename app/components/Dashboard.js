@@ -16,7 +16,6 @@ var Dashboard = React.createClass({
     //getting photo and news on load
     componentWillMount: function(){
         helpers.getAPOD().then(function(data){
-            console.log("data", data);
             this.setState({photo: data.url, title: data.title, type:data.media_type});
         }.bind(this));
 
