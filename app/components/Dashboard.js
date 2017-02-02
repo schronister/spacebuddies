@@ -84,7 +84,7 @@ var Dashboard = React.createClass({
         <br/>
         <p>Log in with Facebook to save profiles</p>
         <a href="#" onClick={this.fbAuth}>Log in with Facebook</a>
-        <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true" onlogin="this.callSetUser();"></div>
+        <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true" onLogin={this.callSetUser}</div>
 
         </div>
         <div className="dashboardContent">
