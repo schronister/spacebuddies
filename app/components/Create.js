@@ -99,6 +99,10 @@ var Create = React.createClass({
             </div>
             </div>
           </form>
+          <div className="imagePreview">
+          <h3>Image Preview</h3>
+          <img src={this.state.photo} />
+          </div>
       </div>
     </div>
     );
